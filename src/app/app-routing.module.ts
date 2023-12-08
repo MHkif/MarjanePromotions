@@ -5,12 +5,13 @@ import { ProxyAdminComponent } from './proxy-admin/proxy-admin.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreatePromotionComponent } from './create-promotion/create-promotion.component';
+import {SuperAdminComponent} from "./super-admin/super-admin.component";
 
 
 const routes: Routes = [
   {
     path: 'managers/promotions',
-    component: DashboardComponent 
+    component: DashboardComponent
   },
   {
     path: 'proxies_admin/promotions',
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'proxies_admin/promotions/create',
     component: CreatePromotionComponent // Replace 'AppComponent' with your actual component
+  },
+  {
+    path: 'super_admin/Statistiques',
+    component: SuperAdminComponent // Replace 'AppComponent' with your actual component
   }
 ];
 
