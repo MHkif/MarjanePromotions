@@ -5,37 +5,41 @@
         </div>
     </div>         -->
 
-  <form method="POST"  class="mt-5">
+  <form [formGroup]="promotionForm" (ngSubmit)="savePromotion()" id="jsonForm">
     <div class="mt-4">
       <label
         for="product"
         class="block text-md text-gray-700 capitalize dark:text-gray-200"
         >Product</label
       >
-      <div  *ngIf="products | async as listProducts; ">
+      <div *ngIf="products | async as listProducts">
         <select
           required
-          value=""
+          formControlName="product"
           name="product"
-          id="category"
+          id="product"
           class="block w-full px-3 py-2 mt-3 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-40"
           aria-placeholder="product"
           aria-label="select a product"
         >
-          <option *ngFor="let p of listProducts.content"
-           value="">{{p.name}}</option>
+          <option *ngFor="let p of listProducts.content" value="{{p| json}}">
+            {{ p.name }}
+          </option>
         </select>
       </div>
     </div>
     <div class="mt-4">
       <label
         for="percentage"
+        formControlName="percentage"
         class="block text-sm text-gray-700 capitalize dark:text-gray-200"
         >Percentage</label
       >
       <input
-        required=""
+        required
+        formControlName="percentage"
         name="percentage"
+        
         type="number"
         class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
       />
@@ -48,8 +52,8 @@
         >Start At</label
       >
       <input
+        formControlName="startAt"
         placeholder=""
-        value=""
         name="startAt"
         type="datetime-local"
         class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
@@ -63,8 +67,8 @@
         >Ended At</label
       >
       <input
+        formControlName="endAt"
         placeholder=""
-        value=""
         name="endAt"
         type="datetime-local"
         class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
@@ -80,7 +84,7 @@
       </button>
     </div>
   </form>
-    <!-- <div class="mt-4">
+  <!-- <div class="mt-4">
       <label
         for="centers"
         class="block text-md text-gray-700 capitalize dark:text-gray-200"

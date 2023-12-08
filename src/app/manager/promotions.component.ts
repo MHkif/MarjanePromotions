@@ -63,7 +63,9 @@ goToPage(page: number): void {
     promotion.status = "ACCEPTED";
     this.promotionService.applyPromotions(promotion, authToken)
     .subscribe({
-     
+     next(value) {
+         
+     },
       error: (err) => {
         this.errorMsg = err.message; 
       }

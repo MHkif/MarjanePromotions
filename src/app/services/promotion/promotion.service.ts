@@ -39,7 +39,10 @@ export class PromotionService {
   }
 
   public savePromotion(promotionData: PromotionRequest): Observable<Promotion> {
-    return this.http.post<any>(`${this.base_url}/promotions/products/create`, promotionData);
+    const headers = new HttpHeaders({
+      'token': "LK103216"
+    });
+    return this.http.post<Promotion>(this.base_url+"promotions/products/create", promotionData,  { headers: headers });
   }
 
   
